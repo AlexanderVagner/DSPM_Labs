@@ -42,11 +42,14 @@
             this.btnReset = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lbCycleCounter = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudIterationsCount)).BeginInit();
             this.SuspendLayout();
             // 
             // panlnputSignal
             // 
+            this.panlnputSignal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panlnputSignal.Location = new System.Drawing.Point(12, 25);
             this.panlnputSignal.Name = "panlnputSignal";
             this.panlnputSignal.Size = new System.Drawing.Size(314, 127);
@@ -54,6 +57,7 @@
             // 
             // panFilteredSignal
             // 
+            this.panFilteredSignal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panFilteredSignal.Location = new System.Drawing.Point(12, 183);
             this.panFilteredSignal.Name = "panFilteredSignal";
             this.panFilteredSignal.Size = new System.Drawing.Size(314, 127);
@@ -79,7 +83,7 @@
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(524, 86);
+            this.btnStart.Location = new System.Drawing.Point(524, 103);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(75, 23);
             this.btnStart.TabIndex = 5;
@@ -89,7 +93,7 @@
             // 
             // btnOptions
             // 
-            this.btnOptions.Location = new System.Drawing.Point(524, 144);
+            this.btnOptions.Location = new System.Drawing.Point(524, 161);
             this.btnOptions.Name = "btnOptions";
             this.btnOptions.Size = new System.Drawing.Size(75, 23);
             this.btnOptions.TabIndex = 6;
@@ -140,7 +144,7 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(524, 115);
+            this.btnReset.Location = new System.Drawing.Point(524, 132);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(75, 23);
             this.btnReset.TabIndex = 10;
@@ -166,11 +170,30 @@
             this.label4.TabIndex = 12;
             this.label4.Text = "Сигнал после фильтрации";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(332, 71);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(148, 13);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Текущий цикл накопления: ";
+            // 
+            // lbCycleCounter
+            // 
+            this.lbCycleCounter.AutoSize = true;
+            this.lbCycleCounter.Location = new System.Drawing.Point(486, 71);
+            this.lbCycleCounter.Name = "lbCycleCounter";
+            this.lbCycleCounter.Size = new System.Drawing.Size(0, 13);
+            this.lbCycleCounter.TabIndex = 14;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(611, 322);
+            this.Controls.Add(this.lbCycleCounter);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnReset);
@@ -209,6 +232,8 @@
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lbCycleCounter;
     }
 }
 

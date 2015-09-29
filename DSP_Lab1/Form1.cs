@@ -19,9 +19,10 @@ namespace DSP_Lab1
 
         private double _snrOut;
         private bool _signalFiltering;
+        private int _filterIterationsCount;
         private int _filterIterationsCounter;
         private Signal _inputSignal;
-        private Signal _filteredignal;
+        private Signal _filteredSignal;
 
         public double SnrOut
         {
@@ -43,10 +44,10 @@ namespace DSP_Lab1
         }
 
         public Signal FilteredSignal {
-            get { return _filteredignal; }
+            get { return _filteredSignal; }
             set
             {
-                _filteredignal = value;
+                _filteredSignal = value;
                 panFilteredSignal.Refresh();
             }
         }
@@ -60,9 +61,10 @@ namespace DSP_Lab1
 
         private void ResetSignals()
         {
-            
+            _filterIterationsCounter = 0;
             InputSignal = Settings.SignalGenerator.Generate(SignalLength);
             FilteredSignal = Settings.NoiseGenerator.ApplyToSignal(InputSignal);
+            lbCycleCounter.Text = _filterIterationsCounter.ToString();
             Settings.Filter.Reset();
             CalcSnrOut();
         }
@@ -116,10 +118,14 @@ namespace DSP_Lab1
             InputSignal = Settings.SignalGenerator.Generate(SignalLength);
             FilteredSignal =Settings.Filter.Filter(Settings.NoiseGenerator.ApplyToSignal(InputSignal));
             CalcSnrOut();
-            if (--_filterIterationsCounter <= 0)
+            if (_filterIterationsCounter++ >= _filterIterationsCount)
             {
                 filterTimer.Stop();
                 btnReset.Enabled = true;
+            }
+            else
+            {
+                lbCycleCounter.Text = _filterIterationsCounter.ToString();
             }
         }
 
@@ -132,8 +138,8 @@ namespace DSP_Lab1
         private void btnStart_Click(object sender, EventArgs e)
         {
             _signalFiltering = false;
-            _filterIterationsCounter = (int)nudIterationsCount.Value;
-            filterTimer.Interval = Math.Max(100,2000/ _filterIterationsCounter);
+            _filterIterationsCount = (int)nudIterationsCount.Value;
+            filterTimer.Interval = Math.Max(100,2000/ _filterIterationsCount);
             btnStart.Enabled = false;
             filterTimer.Start();
         }
